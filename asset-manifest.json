@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/BLOG.git/static/css/main.6fa188ae.css",
-    "main.js": "/BLOG.git/static/js/main.10288020.js",
-    "static/js/453.ede2c593.chunk.js": "/BLOG.git/static/js/453.ede2c593.chunk.js",
-    "index.html": "/BLOG.git/index.html",
-    "main.6fa188ae.css.map": "/BLOG.git/static/css/main.6fa188ae.css.map",
-    "main.10288020.js.map": "/BLOG.git/static/js/main.10288020.js.map",
-    "453.ede2c593.chunk.js.map": "/BLOG.git/static/js/453.ede2c593.chunk.js.map"
+    "main.css": "/BLOG/static/css/main.6fa188ae.css",
+    "main.js": "/BLOG/static/js/main.459a42e0.js",
+    "static/js/453.ede2c593.chunk.js": "/BLOG/static/js/453.ede2c593.chunk.js",
+    "index.html": "/BLOG/index.html",
+    "main.6fa188ae.css.map": "/BLOG/static/css/main.6fa188ae.css.map",
+    "main.459a42e0.js.map": "/BLOG/static/js/main.459a42e0.js.map",
+    "453.ede2c593.chunk.js.map": "/BLOG/static/js/453.ede2c593.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.6fa188ae.css",
-    "static/js/main.10288020.js"
+    "static/js/main.459a42e0.js"
   ]
 }
