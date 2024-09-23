@@ -10,7 +10,7 @@ const PostDetail = ({ posts }) => {
   const handleCommentSubmit = (e) => {
     e.preventDefault();
     if (comment.trim()) {
-      setComments((prevComments) => [...prevComments, comment]);
+      setComments([...comments, comment]);
       setComment('');
     }
   };
@@ -22,6 +22,7 @@ const PostDetail = ({ posts }) => {
           <h1 className="text-2xl font-bold">{post.title}</h1>
           {post.image && <img src={post.image} alt={post.title} className="mt-2 h-40 object-cover rounded" />}
           <p className="mt-2">{post.content}</p>
+
           <h2 className="text-xl mt-4">Comments</h2>
           <form onSubmit={handleCommentSubmit} className="mb-4">
             <input

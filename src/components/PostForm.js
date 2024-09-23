@@ -14,7 +14,7 @@ const PostForm = ({ addPost, posts, updatePost }) => {
       if (post) {
         setTitle(post.title);
         setContent(post.content);
-        setImage(post.image); // Assuming you store the image URL
+        setImage(post.image);
       }
     }
   }, [id, posts]);
@@ -23,11 +23,10 @@ const PostForm = ({ addPost, posts, updatePost }) => {
     e.preventDefault();
     const newPost = { title, content };
 
-    // Handle image for new post or updating post
     if (image && image instanceof File) {
       newPost.image = URL.createObjectURL(image);
     } else if (id !== undefined) {
-      newPost.image = posts[id].image; // Retain the old image if no new image is uploaded
+      newPost.image = posts[id].image;
     }
 
     if (id !== undefined) {
@@ -35,25 +34,26 @@ const PostForm = ({ addPost, posts, updatePost }) => {
     } else {
       addPost(newPost);
     }
-    navigate('/'); // Redirect to home after saving
+
+    navigate('/');
   };
 
   return (
     <form onSubmit={handleSubmit} className="p-4 bg-white rounded shadow-md">
-      <h2 className="text-2xl font-bold mb-4">{id !== undefined ? 'Edit Post' : 'Create Post'}</h2>
+      <h2 className="text-2xl font-bold mb-4">{id ? 'Edit Post' : 'Create Post'}</h2>
       <input
         type="text"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         placeholder="Post Title"
-        className="border p-2 mb-4 w-full rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="border p-2 mb-4 w-full rounded"
         required
       />
       <textarea
         value={content}
         onChange={(e) => setContent(e.target.value)}
         placeholder="Post Content"
-        className="border p-2 mb-4 w-full rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="border p-2 mb-4 w-full rounded"
         required
       />
       <input
@@ -62,7 +62,9 @@ const PostForm = ({ addPost, posts, updatePost }) => {
         onChange={(e) => setImage(e.target.files[0])}
         className="mb-4"
       />
-      <button type="submit" className="bg-blue-500 text-white p-2 rounded hover:bg-blue-600">Submit</button>
+      <button type="submit" className="bg-blue-500 text-white p-2 rounded">
+        Submit
+      </button>
     </form>
   );
 };

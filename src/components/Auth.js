@@ -3,7 +3,7 @@ import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
 const Auth = () => {
-  const { login, signup } = useAuth(); // Assuming you have a signup function in your AuthContext
+  const { login, signup } = useAuth();
   const [isLogin, setIsLogin] = useState(true);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -11,12 +11,16 @@ const Auth = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (isLogin) {
-      await login({ username, password });
-    } else {
-      await signup({ username, password }); // Call the signup function
+    try {
+      if (isLogin) {
+        await login({ username, password });
+      } else {
+        await signup({ username, password });
+      }
+      navigate('/');
+    } catch (error) {
+      console.error('Error during login/signup:', error);
     }
-    navigate('/'); // Redirect to home after successful login/signup
   };
 
   return (
@@ -27,17 +31,26 @@ const Auth = () => {
         value={username}
         onChange={(e) => setUsername(e.target.value)}
         placeholder="Username"
-        className="border p-2 mb-4 w-full rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="border p-2 mb-4 w-full rounded"
+        required
       />
       <input
         type="password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         placeholder="Password"
-        className="border p-2 mb-4 w-full rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="border p-2 mb-4 w-full rounded"
+        required
       />
-      <button type="submit" className="bg-blue-600 text-white p-2 rounded hover:bg-blue-700">{isLogin ? 'Login' : 'Signup'}</button>
-      <button type="button" onClick={() => setIsLogin(!isLogin)} className="ml-4">{isLogin ? 'Switch to Signup' : 'Switch to Login'}</button>
+      <button type="submit" className="bg-blue-600 text-white p-2 rounded">
+        {isLogin ? 'Login' : 'Signup'}
+      </button>
+      <button
+        type="button"
+        onClick={() => setIsLogin(!isLogin)}
+        className="ml-4 text-blue-500">
+        {isLogin ? 'Switch to Signup' : 'Switch to Login'}
+      </button>
     </form>
   );
 };

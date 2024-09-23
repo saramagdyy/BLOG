@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import PostList from './components/PostList';
 import PostDetail from './components/PostDetail';
 import PostForm from './components/PostForm';
@@ -43,6 +43,13 @@ const App = () => {
             onChange={(e) => setSearch(e.target.value)}
             className="border p-2 mb-4 w-full rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
+          
+          {/* Blog Posts heading with one Create New Post button */}
+          {/* <h2 className="text-2xl font-semibold mb-4">Blog Posts</h2>
+          <Link to="/new" className="mb-4 inline-block bg-blue-500 text-white px-4 py-2 rounded">
+            Create New Post
+          </Link> */}
+
           <Routes>
             <Route path="/" element={<PostList posts={currentPosts} deletePost={deletePost} />} />
             <Route path="/posts/:id" element={<PostDetail posts={posts} />} />
@@ -51,6 +58,7 @@ const App = () => {
             <Route path="/login" element={<Auth />} />
             <Route path="/signup" element={<Signup />} />
           </Routes>
+
           <div className="flex justify-between items-center mt-4">
             <button 
               onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
