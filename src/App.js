@@ -45,10 +45,10 @@ const App = () => {
           />
           
           {/* Blog Posts heading with one Create New Post button */}
-          {/* <h2 className="text-2xl font-semibold mb-4">Blog Posts</h2>
+          <h2 className="text-2xl font-semibold mb-4">Blog Posts</h2>
           <Link to="/new" className="mb-4 inline-block bg-blue-500 text-white px-4 py-2 rounded">
             Create New Post
-          </Link> */}
+          </Link>
 
           <Routes>
             <Route path="/" element={<PostList posts={currentPosts} deletePost={deletePost} />} />
